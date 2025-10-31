@@ -1,0 +1,251 @@
+<!-- templates/index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>French Language Self-Assessment</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="Static/CSS/frontend.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="samplehomepage.html">Home</a></li>
+      <li><a href="standards.htm">Standards</a></li>
+      <li><a href="resources.html">Resources</a></li>
+    </ul>
+  </nav>
+  <main class="container">
+  <main class="container">
+    <h1>French Language Self-Assessment</h1>
+
+    <section class="intro">
+      <p>
+        This tool allows you to self-assess your language proficiency. Please complete this in
+        <strong style="color:var(--accent)">one sitting</strong>.
+      </p>
+    </section>
+
+    <form id="assessmentForm">
+      <!-- Basic info -->
+      <label>What is (are) your native language(s)?</label>
+      <input type="text" name="native_languages" />
+
+      <label>What is your age?</label>
+      <input type="number" name="age" min="0" max="120" />
+
+      <label>Do you live in a French speaking environment?</label>
+      <div class="row">
+        <label><input type="radio" name="speaking_environment" value="Yes" checked /> Yes</label>
+        <label><input type="radio" name="speaking_environment" value="No" /> No</label>
+      </div>
+
+      <label>What is your <span class="accent">highest</span> level of education?</label>
+      <select name="education">
+        <option>Less than High School degree (Le brevet des collèges)</option>
+        <option>High School degree (Le diplôme du baccalauréat)</option>
+        <option>Undergraduate degree (Le diplôme de Licence)</option>
+        <option>Graduate degree (Le diplôme de Master/ Doctorat)</option>
+        <option>Post Doctoral (Post-doctorat)</option>
+        <option>Other (Autres)</option>
+      </select>
+      <label>If you clicked “other”, please specify</label>
+      <input type="text" name="other_education" />
+
+      <hr />
+
+      <label>How many years of French learning have you completed at the following levels?</label>
+      <div class="grid">
+        <div><label>Elementary School</label><input type="number" name="years_elementary" min="0" value="0"/></div>
+        <div><label>Middle/Junior High School</label><input type="number" name="years_junior" min="0" value="0"/></div>
+        <div><label>High School</label><input type="number" name="years_high_school" min="0" value="0"/></div>
+        <div><label>University/College</label><input type="number" name="years_university" min="0" value="0"/></div>
+        <div><label>Language Institutes</label><input type="number" name="years_institutes" min="0" value="0"/></div>
+      </div>
+
+      <hr />
+
+      <p>
+        Before you begin the questionnaire, rate your overall level of proficiency for each of the following skills:
+      </p>
+        <label for="self_reading">Reading</label>
+        <input type="range" name="self_reading" id="self_reading" min="1" max="4" value="1" step="1" oninput="updateLabel(this)">
+        <span class="slider-label" id="self_reading_label">Beginner</span>
+
+        <label for="self_listening">Listening</label>
+        <input type="range" name="self_listening" id="self_listening" min="1" max="4" value="1" step="1" oninput="updateLabel(this)">
+        <span class="slider-label" id="self_listening_label">Beginner</span>
+
+        <label for="self_writing">Writing</label>
+        <input type="range" name="self_writing" id="self_writing" min="1" max="4" value="1" step="1" oninput="updateLabel(this)">
+        <span class="slider-label" id="self_writing_label">Beginner</span>
+
+        <label for="self_speaking">Speaking</label>
+        <input type="range" name="self_speaking" id="self_speaking" min="1" max="4" value="1" step="1" oninput="updateLabel(this)">
+        <span class="slider-label" id="self_speaking_label">Beginner</span>
+
+
+      <hr />
+
+      <p>
+        Choose between one of the following language frameworks. Check the boxes that you are confident you can perform <strong class="accent">95 percent</strong> of the time.
+      </p>
+      <div class="row">
+        <label><input type="radio" name="framework" value="ACTFL" checked /> ACTFL (American Council of the Teaching of Foreign Language)</label>
+        <label><input type="radio" name="framework" value="CEFRL" /> CEFRL (Common European Framework of Reference)</label>
+      </div>
+
+      <!-- ACTFL expanders -->
+      <div id="actfl-block" class="framework-block">
+        <details>
+          <summary>ACTFL Reading Proficiency Can Do Statements</summary>
+          <div class="checkbox-list" data-skill="Reading" data-framework="ACTFL">
+            <!-- Put checkboxes in increasing order so highest = last checked -->
+            <label><input type="checkbox" data-level="1"> Novice Low — I can identify memorized or familiar words ...</label>
+            <label><input type="checkbox" data-level="2"> Novice Mid — I can identify some basic facts ...</label>
+            <label><input type="checkbox" data-level="3"> Novice High — ...</label>
+            <label><input type="checkbox" data-level="4"> Intermediate Low — ...</label>
+            <label><input type="checkbox" data-level="5"> Intermediate Mid — ...</label>
+            <label><input type="checkbox" data-level="6"> Intermediate High — ...</label>
+            <label><input type="checkbox" data-level="7"> Advanced Low — ...</label>
+            <label><input type="checkbox" data-level="8"> Advanced Mid — ...</label>
+            <label><input type="checkbox" data-level="9"> Advanced High — ...</label>
+            <label><input type="checkbox" data-level="10"> Superior — ...</label>
+          </div>
+        </details>
+
+        <details>
+          <summary>ACTFL Listening Proficiency Can Do Statements</summary>
+          <div class="checkbox-list" data-skill="Listening" data-framework="ACTFL">
+            <label><input type="checkbox" data-level="1"> Novice Low — ...</label>
+            <label><input type="checkbox" data-level="2"> Novice Mid — ...</label>
+            <label><input type="checkbox" data-level="3"> Novice High — ...</label>
+            <label><input type="checkbox" data-level="4"> Intermediate Low — ...</label>
+            <label><input type="checkbox" data-level="5"> Intermediate Mid — ...</label>
+            <label><input type="checkbox" data-level="6"> Intermediate High — ...</label>
+            <label><input type="checkbox" data-level="7"> Advanced Low — ...</label>
+            <label><input type="checkbox" data-level="8"> Advanced Mid — ...</label>
+            <label><input type="checkbox" data-level="9"> Advanced High — ...</label>
+            <label><input type="checkbox" data-level="10"> Superior — ...</label>
+          </div>
+        </details>
+
+        <details>
+          <summary>ACTFL Writing Proficiency Can Do Statements</summary>
+          <div class="checkbox-list" data-skill="Writing" data-framework="ACTFL">
+            <label><input type="checkbox" data-level="1"> Novice Low — ...</label>
+            <label><input type="checkbox" data-level="2"> Novice Mid — ...</label>
+            <label><input type="checkbox" data-level="3"> Novice High — ...</label>
+            <label><input type="checkbox" data-level="4"> Intermediate Low — ...</label>
+            <label><input type="checkbox" data-level="5"> Intermediate Mid — ...</label>
+            <label><input type="checkbox" data-level="6"> Intermediate High — ...</label>
+            <label><input type="checkbox" data-level="7"> Advanced Low — ...</label>
+            <label><input type="checkbox" data-level="8"> Advanced Mid — ...</label>
+            <label><input type="checkbox" data-level="9"> Advanced High — ...</label>
+            <label><input type="checkbox" data-level="10"> Superior — ...</label>
+          </div>
+        </details>
+
+        <details>
+          <summary>ACTFL Speaking Proficiency Can Do Statements</summary>
+          <div class="checkbox-list" data-skill="Speaking" data-framework="ACTFL">
+            <label><input type="checkbox" data-level="1"> Novice Low — ...</label>
+            <label><input type="checkbox" data-level="2"> Novice Mid — ...</label>
+            <label><input type="checkbox" data-level="3"> Novice High — ...</label>
+            <label><input type="checkbox" data-level="4"> Intermediate Low — ...</label>
+            <label><input type="checkbox" data-level="5"> Intermediate Mid — ...</label>
+            <label><input type="checkbox" data-level="6"> Intermediate High — ...</label>
+            <label><input type="checkbox" data-level="7"> Advanced Low — ...</label>
+            <label><input type="checkbox" data-level="8"> Advanced Mid — ...</label>
+            <label><input type="checkbox" data-level="9"> Advanced High — ...</label>
+            <label><input type="checkbox" data-level="10"> Superior — ...</label>
+          </div>
+        </details>
+      </div>
+
+      <!-- CEFRL expanders -->
+      <div id="cefrl-block" class="framework-block" style="display:none;">
+        <details>
+          <summary>CEFRL Reading Proficiency Can Do Statements</summary>
+          <div class="checkbox-list" data-skill="Reading" data-framework="CEFRL">
+            <label><input type="checkbox" data-level="1"> A1 — I can understand familiar names, words...</label>
+            <label><input type="checkbox" data-level="2"> A2 — I can read very short, simple texts...</label>
+            <label><input type="checkbox" data-level="3"> B1.2 — I can understand texts that consist mainly of high frequency ...</label>
+            <label><input type="checkbox" data-level="4"> B2.2 — I can read articles and reports concerned with contemporary problems ...</label>
+            <label><input type="checkbox" data-level="5"> C1 — I can understand long and complex factual and literary texts...</label>
+            <label><input type="checkbox" data-level="6"> C2 — I can read with ease virtually all forms of the written language...</label>
+          </div>
+        </details>
+
+        <details>
+          <summary>CEFRL Listening Proficiency Can Do Statements</summary>
+          <div class="checkbox-list" data-skill="Listening" data-framework="CEFRL">
+            <label><input type="checkbox" data-level="1"> A1 — ...</label>
+            <label><input type="checkbox" data-level="2"> A2 — ...</label>
+            <label><input type="checkbox" data-level="3"> B1.2 — ...</label>
+            <label><input type="checkbox" data-level="4"> B2.2 — ...</label>
+            <label><input type="checkbox" data-level="5"> C1 — ...</label>
+            <label><input type="checkbox" data-level="6"> C2 — ...</label>
+          </div>
+        </details>
+
+        <details>
+          <summary>CEFRL Writing Proficiency Can Do Statements</summary>
+          <div class="checkbox-list" data-skill="Writing" data-framework="CEFRL">
+            <label><input type="checkbox" data-level="1"> A1 — ...</label>
+            <label><input type="checkbox" data-level="2"> A2 — ...</label>
+            <label><input type="checkbox" data-level="3"> B1.2 — ...</label>
+            <label><input type="checkbox" data-level="4"> B2.2 — ...</label>
+            <label><input type="checkbox" data-level="5"> C1 — ...</label>
+            <label><input type="checkbox" data-level="6"> C2 — ...</label>
+          </div>
+        </details>
+
+        <details>
+          <summary>CEFRL Speaking Proficiency Can Do Statements</summary>
+          <div class="checkbox-list" data-skill="Speaking" data-framework="CEFRL">
+            <label><input type="checkbox" data-level="1"> A1 — ...</label>
+            <label><input type="checkbox" data-level="2"> A2 — ...</label>
+            <label><input type="checkbox" data-level="3"> B1.2 — ...</label>
+            <label><input type="checkbox" data-level="4"> B2.2 — ...</label>
+            <label><input type="checkbox" data-level="5"> C1 — ...</label>
+            <label><input type="checkbox" data-level="6"> C2 — ...</label>
+          </div>
+        </details>
+      </div>
+
+      <hr />
+      <label>Do you consent to sharing your data?</label>
+      <div class="row">
+        <label><input type="radio" name="consent" value="I consent to sharing my data" checked /> I consent to sharing my data</label>
+        <label><input type="radio" name="consent" value="I do not consent to sharing my data" /> I do not consent to sharing my data</label>
+      </div>
+
+      <label>Any feedback?</label>
+      <textarea name="feedback" rows="6"></textarea>
+
+      <div class="actions">
+        <button type="submit">Submit</button>
+      </div>
+
+      <!-- <p id="timing">Time elapsed: <span id="time-elapsed">0</span> seconds</p> -->
+
+    </form>
+
+    <section id="chart-area" style="display:none;">
+      <h2>Proficiency Levels Across Skills</h2>
+      <canvas id="proficiencyChart"></canvas>
+    </section>
+
+    <p id="responseMsg"></p>
+
+    <footer>
+      <p>Tool developed by Professor Stéphanie Gaillard in collaboration with Diana Nazari and Moon Hwan Kim, Data Science Fellow at Brown University (DATA 1150), Fall 2024.
+    This webpage is a continuation of the first project created in 2022. The tool developed initially can be seen at the following URL: https://french-brown.web.app/</p>
+    </footer>
+  </main>
+
+  <script src="Static/JS/frontend.js"></script>
+</body>
+</html>

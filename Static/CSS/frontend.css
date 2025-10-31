@@ -1,0 +1,106 @@
+/* static/style.css */
+:root {
+  --accent: #0074d9;
+  --bg: #eeece4;
+  --card: #eeece4;
+  --muted: #666;
+}
+* { box-sizing: border-box; }
+body {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--bg);
+  color: #111;
+  margin: 0;
+  padding: 1.5rem;
+}
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--card);
+  padding: 1.25rem 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(11,13,15,0.06);
+}
+h1 { margin-top: 0; }
+label { display:block; margin-top:12px; font-weight:600; }
+input[type="text"], input[type="number"], select, textarea {
+  width: 100%;
+  padding: 8px 10px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+.row { display:flex; gap:1rem; flex-wrap:wrap; margin-top:6px; }
+.grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
+.actions { margin-top: 1rem; }
+button { background: var(--accent); color:white; padding:10px 16px; border-radius:8px; border:none; cursor:pointer; font-weight:600;}
+button:hover { filter:brightness(.95); }
+.checkbox-list label { display:block; margin:8px 0; font-weight:400; }
+details { margin-top: 8px; padding: 8px; border-radius:6px; border:1px solid #eee; background:#fafafa;}
+footer { margin-top:1.5rem; text-align:center; color:var(--muted); font-size:0.9rem; }
+#timing { margin-top: 12px; color:var(--muted); }
+
+.home-link {
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  background-color: #0074d9;   /* blue to match your accent */
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  transition: background 0.2s ease-in-out;
+}
+
+.home-link:hover {
+  background-color: #005fa3;  /* slightly darker on hover */
+}
+
+input[type="range"] {
+  width: 100%;
+  margin: 6px 0;
+  accent-color: #0074d9;
+}
+
+.slider-label {
+  display: inline-block;
+  margin-left: 10px;
+  font-weight: 600;
+  color: #0074d9;
+}
+
+/* Navigation bar */
+.navbar {
+  width: 100%;
+  padding: 20px 0px;
+  display: flex;
+  justify-content: flex-end; /* right-align links */
+  background-color: transparent; /* keep white background */
+  position: fixed; /* stays at top */
+  top: 0;
+  left: -10px;
+  z-index: 100;
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 5px;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #7c7c7c;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #000000;
+}

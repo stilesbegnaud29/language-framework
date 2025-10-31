@@ -1,0 +1,124 @@
+/* Reset default margins and set full height */
+html, body{
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #eeece4;
+}
+
+/* Navigation bar */
+.navbar {
+  width: 100%;
+  padding: 20px 0px;
+  display: flex;
+  justify-content: flex-end; /* right-align links */
+  background-color: transparent; /* keep white background */
+  position: fixed; /* stays at top */
+  top: 0;
+  left: -10px;
+  z-index: 100;
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 5px;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #7c7c7c;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #000000;
+}
+
+/* Container for vertical centering */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  padding-top: 80px; /* add space for navbar */
+}
+
+/* Website Title */
+.container h1 {
+  font-size: 62px;
+  margin: 0 0 80px 0;
+}
+
+/* Welcome Text */
+.container h2 {
+  font-size: 60px;
+  margin: 0 0 20px 0;
+}
+
+/* Subtitle */
+.container h3 {
+  font-size: 24px;
+  margin: 0 0 40px 0;
+  font-weight: normal;
+  color: #333;
+}
+
+/* Buttons container */
+.buttons {
+  display: flex;
+  gap: 20px;
+}
+
+/* Button styling */
+.buttons button {
+  padding: 30px 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #007BFF;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.button-subtext {
+  display: block;
+  font-size: 14px;       /* smaller than main text */
+  font-weight: normal;   /* optional: make it lighter */
+  margin-top: 5px;       /* space between main text and subtext */
+}
+
+.button-link {
+  text-decoration: none; /* remove underline */
+  display: inline-block;
+}
+
+.buttons button:hover {
+  background-color: #002d5c;
+}
+
+/* Adjust layout for smaller screens */
+@media (max-width: 600px) {
+  .container h1 {
+    font-size: 48px;
+  }
+  .buttons {
+    flex-direction: column;
+  }
+  .buttons button {
+    width: 80%;
+    font-size: 16px;
+  }
+  .nav-links {
+    gap: 15px;
+  }
+  .nav-links li a {
+    font-size: 16px;
+  }
+}
