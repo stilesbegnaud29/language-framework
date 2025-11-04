@@ -7,11 +7,16 @@ const responseMsg = document.getElementById("responseMsg");
 const chartArea = document.getElementById("chart-area");
 let chartInstance = null;
 
-// Update a small timer every second
-setInterval(() => {
-  const elapsed = Math.floor((Date.now() - startTime) / 1000);
-  timeElapsedSpan.innerText = elapsed;
-}, 1000);
+
+/*
+Do you need a timer? it's erroring because you don't have anything in your frontend
+*/
+
+// // Update a small timer every second
+// setInterval(() => {
+//   const elapsed = Math.floor((Date.now() - startTime) / 1000);
+//   timeElapsedSpan.innerText = elapsed;
+// }, 1000);
 
 // Toggle framework blocks
 document.querySelectorAll('input[name="framework"]').forEach(r => {
@@ -130,15 +135,19 @@ form.addEventListener("submit", async (ev) => {
   // send to backend
   responseMsg.textContent = "Saving…";
   try {
-    const res = await fetch("/submit", {
+    console.log("Sending payload to backend:", payload);
+    const res = await fetch("http://127.0.0.1:5000/submit", { // specifying the port we need to hit to access our flask backend
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
     });
+    console.log("raw response obj:", res);
     const data = await res.json();
     if (data.status === "ok") {
+      console.log("we got an ok");
       responseMsg.textContent = "Thanks — your response was saved.";
     } else {
+      console.log("we got an error:", data.message);
       responseMsg.textContent = "Error: " + data.message;
     }
   } catch (err) {
@@ -152,11 +161,16 @@ function updateLabel(slider) {
   label.textContent = levels[slider.value - 1];
 }
 
-fetch("/submit", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify(formData)
-})
-  .then(res => res.json())  // fails if Flask sends nothing
-  .then(data => console.log("Response:", data))
-  .catch(err => console.error("Network error:", err));
+/*
+this is just a hanging fetch that executes at the very start of the page load -- I don't think it's useful 
+(you just need a fetch for the form itself) and you already have that with your button listener above
+*/
+
+// fetch("/submit", {
+//   method: "POST",
+//   headers: { "Content-Type": "application/json" },
+//   body: JSON.stringify(formData)
+// })
+//   .then(res => res.json())  // fails if Flask sends nothing
+//   .then(data => console.log("Response:", data))
+//   .catch(err => console.error("Network error:", err));

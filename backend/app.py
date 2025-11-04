@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from datetime import datetime
 import write_csv
 
 app = Flask(__name__)
+CORS(app) # to allow cross-origin requests between front and backend
 
 proficiency_mapping_reverse = {
     1: 'Novice Low', 2: 'Novice Mid', 3: 'Novice High',
