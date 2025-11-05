@@ -14,38 +14,41 @@
     <!-- Navigation bar -->
   <nav class="navbar">
     <ul class="nav-links">
-      <li><a href="samplehomepage.html">Home</a></li>
+      <li><a href="newhomepage.html">Home</a></li>
       <li><a href="frontend.html">Assessment</a></li>
       <li><a href="resources.html">Resources</a></li>
     </ul>
   </nav>
-  <!-- 🔔 Popup -->
+
   <div id="popup" class="popup">
-    <div class="popup-content">
-      <h2>How to navigate the standards page:</h2>
+  <div class="popup-content">
+    <h2>How to navigate the standards page:</h2>
 
-      <!-- Carousel container -->
-      <div class="carousel">
-        <button class="arrow left" id="prevBtn">&#10094;</button>
-
-        <div class="slides">
-          <img src="Static/Images/standardspage.png" class="slide active" alt="Slide 1">
-          <img src="Static/Images/standardspage.png" class="slide" alt="Slide 2">
-          <img src="Static/Images/standardspage.png" class="slide" alt="Slide 3">
-          <img src="Static/Images/standardspage.png" class="slide" alt="Slide 4">
-        </div>
-
-        <button class="arrow right" id="nextBtn">&#10095;</button>
+    <!-- Carousel container -->
+    <div class="carousel">
+      <div class="slides">
+        <img src="Static/Images/standardsguide_slide1.png" class="slide active" alt="Slide 1">
+        <img src="Static/Images/standardspage.png" class="slide" alt="Slide 2">
+        <img src="Static/Images/standardspage.png" class="slide" alt="Slide 3">
+        <img src="Static/Images/standardspage.png" class="slide" alt="Slide 4">
       </div>
+    </div>
 
-      <!-- Dots indicator -->
+    <!-- Caption area -->
+    <div class="caption" id="caption">Welcome! This guide will show you how to use the Standards page.</div>
+
+    <!-- Dots + Arrows container -->
+    <div class="controls-row">
+      <button class="arrow left" id="prevBtn">&#10094;</button>
       <div class="dots">
         <span class="dot active" data-index="0"></span>
         <span class="dot" data-index="1"></span>
         <span class="dot" data-index="2"></span>
         <span class="dot" data-index="3"></span>
       </div>
-
+      <button class="arrow right" id="nextBtn">&#10095;</button>
+      
+    </div>
       <p>Click the "Help/Info" button to bring up this window.</p>
       <label>
         <input type="checkbox" id="dontShowAgain"> Do not show again
@@ -63,7 +66,7 @@
           style="border: none;" 
           sandbox="allow-scripts allow-same-origin allow-popups"
           loading="lazy">
-    Your browser doesn’t support iframes.
+    Your browser does not support iframes.
   </iframe>
 
 

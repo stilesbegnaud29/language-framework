@@ -35,7 +35,13 @@ input[type="text"], input[type="number"], select, textarea {
 .actions { margin-top: 1rem; }
 button { background: var(--accent); color:white; padding:10px 16px; border-radius:8px; border:none; cursor:pointer; font-weight:600;}
 button:hover { filter:brightness(.95); }
-.checkbox-list label { display:block; margin:8px 0; font-weight:400; }
+.checkbox-list label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5em; /* space between checkbox and text */
+  margin: 8px 0;
+  font-weight: 400;
+}
 details { margin-top: 8px; padding: 8px; border-radius:6px; border:1px solid #eee; background:#fafafa;}
 footer { margin-top:1.5rem; text-align:center; color:var(--muted); font-size:0.9rem; }
 #timing { margin-top: 12px; color:var(--muted); }
@@ -103,4 +109,9 @@ input[type="range"] {
 
 .nav-links li a:hover {
   color: #000000;
+}
+
+label small {
+  color: black;
+  font-style: italic;
 }

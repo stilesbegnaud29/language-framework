@@ -1,0 +1,104 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Language Proficiency — CEFR / ACTFL Mapping</title>
+  <link rel="stylesheet" href="Static/CSS/replica_standards.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='36' height='36'><rect width='36' height='36' rx='6' fill='%23264a7f'/><text x='50%' y='54%' font-size='18' text-anchor='middle' fill='white' font-family='Arial' dy='.3em'>FR</text></svg>" alt="logo" />
+        <h1>Language Proficiency Frameworks</h1>
+      </div>
+      <nav class="top-nav">
+        <a href="#levels">Levels</a>
+        <a href="#can-do">Can-Do Statements</a>
+        <a href="#mapping">Mapping</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <h2>American &amp; European Proficiency Frameworks</h2>
+          <p>Explore Can-Do statements across CEFR levels (A1 → C2) and compare with ACTFL descriptors. Use filters and search to find learning targets.</p>
+          <div class="hero-controls">
+            <label for="search">Search Can-Do</label>
+            <input id="search" type="search" placeholder="e.g. introduce myself, order food..." />
+          </div>
+        </div>
+        <div class="hero-image">
+          <svg viewBox="0 0 300 200" aria-hidden="true">
+            <rect width="300" height="200" rx="12" fill="#f5f8ff"/>
+            <path d="M10 160 L290 40" stroke="#264a7f" stroke-width="6" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section id="levels" class="container levels">
+      <h3>Choose a CEFR Level</h3>
+      <div class="level-tabs" role="tablist" aria-label="CEFR levels">
+        <!-- dynamically populated -->
+      </div>
+      <div class="level-summary">
+        <strong>Level summary:</strong> <span id="level-summary-text">Select a level to see summary.</span>
+      </div>
+    </section>
+
+    <section id="can-do" class="container can-do">
+      <div class="can-do-header">
+        <h3>Can-Do Statements</h3>
+        <div class="filters">
+          <label><input type="checkbox" class="mode-filter" value="Reading" checked /> Reading</label>
+          <label><input type="checkbox" class="mode-filter" value="Listening" checked /> Listening</label>
+          <label><input type="checkbox" class="mode-filter" value="Speaking" checked /> Speaking</label>
+          <label><input type="checkbox" class="mode-filter" value="Writing" checked /> Writing</label>
+          <button id="resetFilters" class="btn-sm">Reset</button>
+        </div>
+      </div>
+
+      <div id="statements" class="statements-grid">
+        <!-- statements injected here -->
+      </div>
+
+      <div class="load-more-wrap">
+        <button id="showAll" class="btn">Show All Levels</button>
+      </div>
+    </section>
+
+    <section id="mapping" class="container mapping">
+      <h3>CEFR ↔ ACTFL Mapping</h3>
+      <table class="mapping-table">
+        <thead>
+          <tr>
+            <th>CEFR</th>
+            <th>ACTFL (approx.)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>A1</td><td>Novice High / Intermediate Low</td></tr>
+          <tr><td>A2</td><td>Intermediate Low / Intermediate Mid</td></tr>
+          <tr><td>B1</td><td>Intermediate Mid / Intermediate High</td></tr>
+          <tr><td>B2</td><td>Advanced Low / Advanced Mid</td></tr>
+          <tr><td>C1</td><td>Advanced Mid / Advanced High</td></tr>
+          <tr><td>C2</td><td>Superior</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <footer class="site-footer container">
+      <small>Replica demo — not the original site. Use responsibly.</small>
+      <div>Built with ❤️ · <a href="https://brown.edu" target="_blank" rel="noopener">Brown University</a> (inspiration)</div>
+    </footer>
+  </main>
+
+  <script src="Static/JS/replica_standards.js"></script>
+</body>
+</html>

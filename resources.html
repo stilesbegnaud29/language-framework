@@ -10,17 +10,23 @@
 
   <h1>Resources</h1>
 
-    <!-- Navigation bar -->
+  <!-- Navigation bar -->
   <nav class="navbar">
     <ul class="nav-links">
-      <li><a href="samplehomepage.html">Home</a></li>
+      <li><a href="newhomepage.html">Home</a></li>
       <li><a href="frontend.html">Assessment</a></li>
       <li><a href="standards.htm">Standards</a></li>
-      
     </ul>
   </nav>
 
   <section class="controls">
+    <!-- SEARCH BAR -->
+    <div class="control">
+      <label for="search">Search Resources:</label>
+      <input type="text" id="search" placeholder="Search by keyword...">
+    </div>
+
+    <!-- FILTER BY PROFICIENCY -->
     <div class="control">
       <label for="filter">Filter by Proficiency:</label>
       <select id="filter">
@@ -32,6 +38,7 @@
       </select>
     </div>
 
+    <!-- FILTER BY TYPE -->
     <div class="control">
       <label for="typeFilter">Filter by Type:</label>
       <select id="typeFilter">
@@ -43,6 +50,7 @@
       </select>
     </div>
 
+    <!-- SORT OPTIONS -->
     <div class="control">
       <label for="sort">Sort by:</label>
       <select id="sort">
@@ -53,7 +61,6 @@
   </section>
 
   <main class="grid" id="resourceGrid">
-    <!-- Each card has data-level for filtering -->
     <div class="card" data-level="beginner" data-type="reading">
       <div class="skill-label reading">Reading</div>
       <div class="skill-label beginner">Beginner</div>
@@ -85,7 +92,6 @@
       <p>Challenge your oral fluency with academic debates.</p>
       <a href="https://france24.com/fr" target="_blank">Watch</a>
     </div>
-
   </main>
 
   <footer>

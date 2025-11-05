@@ -41,37 +41,65 @@ function computeSkillScores(frameworkName) {
   return result;
 }
 
-function drawChart(scores) {
+function drawChart(scores, framework = "ACTFL") {
   const labels = ["Reading", "Listening", "Writing", "Speaking"];
   const data = labels.map(l => scores[l] || 0);
 
   const ctx = document.getElementById('proficiencyChart').getContext('2d');
+
+  // Define level labels for CEFRL and ACTFL
+  const CEFRL_LEVELS = ["", "A1", "A2", "B1", "B2", "C1", "C2"];
+  const ACTFL_LEVELS = [
+    "",
+    "Novice Low", "Novice Mid", "Novice High",
+    "Intermediate Low", "Intermediate Mid", "Intermediate High",
+    "Advanced Low", "Advanced Mid", "Advanced High", "Superior"
+  ];
+
+  const yLabels = framework === "CEFRL" ? CEFRL_LEVELS : ACTFL_LEVELS;
+  const maxValue = framework === "CEFRL" ? 6 : 10;
+
   if (chartInstance) {
-    chartInstance.data.datasets[0].data = data;
-    chartInstance.update();
-  } else {
-    chartInstance = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels,
-        datasets: [{
-          label: 'Proficiency Level',
-          data,
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true,
-            suggestedMax: 10
+    chartInstance.destroy();
+  }
+
+  chartInstance = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{
+        label: framework + " Proficiency Level",
+        data,
+        backgroundColor: '#0074d9'
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+          min: 0,
+          max: maxValue,
+          ticks: {
+            stepSize: 1,
+            callback: function(value) {
+              return yLabels[value] || "";
+            }
+          },
+          title: {
+            display: true,
+            text: framework + " Proficiency Level"
           }
         }
+      },
+      plugins: {
+        legend: { display: false }
       }
-    });
-  }
+    }
+  });
+
   chartArea.style.display = "block";
 }
+
 
 // Gather all form values plus computed levels and post
 form.addEventListener("submit", async (ev) => {
@@ -106,8 +134,9 @@ form.addEventListener("submit", async (ev) => {
     payload["CEFRL Writing Proficiency Can Do Statements"] = "NA";
     payload["CEFRL Speaking Proficiency Can Do Statements"] = "NA";
 
-    drawChart(scores);
-  } else {
+    drawChart(scores, framework);
+  } 
+    else {
     const scores = computeSkillScores("CEFRL");
     payload["CEFRL Reading Proficiency Can Do Statements"] = scores.Reading;
     payload["CEFRL Listening Proficiency Can Do Statements"] = scores.Listening;
@@ -118,7 +147,7 @@ form.addEventListener("submit", async (ev) => {
     payload["ACTFL Writing Proficiency Can Do Statements"] = "NA";
     payload["ACTFL Speaking Proficiency Can Do Statements"] = "NA";
 
-    drawChart(scores);
+    drawChart(scores, framework);
   }
 
   // include self-rating fields as well
