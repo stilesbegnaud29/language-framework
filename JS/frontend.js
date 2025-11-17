@@ -1,6 +1,6 @@
 // static/frontend.js
 
-const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbxk8eObL7P4tWn7sYUgKQyjJLUgim1xcyjWEwKYJuperR7PG1_rZYem56myBwkEKETN/exec"
+const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbzhVLNRU-ZZh7ZCcI5oXIt3tQqJWvbZ3Hdca1dpPRHn-3KceocUqOGx7PZS0Q2E4y30/exec"
 
 const form = document.getElementById("assessmentForm");
 const startTime = Date.now();
