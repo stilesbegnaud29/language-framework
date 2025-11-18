@@ -104,11 +104,6 @@ form.addEventListener("submit", async (ev) => {
 
   // collect all form data
   const formData = new FormData(form);
-  const payload = {};
-
-  for (const [k, v] of formData.entries()) {
-    payload[k] = v;
-  }
 
   // capture numeric fields
   [
@@ -116,59 +111,55 @@ form.addEventListener("submit", async (ev) => {
     "years_institutes","age","self_reading","self_listening",
     "self_writing","self_speaking"
   ].forEach(f => {
-    if (payload[f] !== undefined) payload[f] = Number(payload[f]) || 0; // 0 if no input
+    const val = formData.get(f);
+    formData.set(f, val ? Number(val) : 0); // 0 if no input
   });
 
   // add metadata
-  payload.time_taken_seconds = Math.floor((Date.now() - startTime) / 1000);
-  payload.Completion_Date = new Date().toISOString().slice(0,10);
+  formData.set("time_taken_seconds", Math.floor((Date.now() - startTime) / 1000));
+  formData.set("Completion_Date", new Date().toISOString().slice(0,10));
 
-  
-  const framework = payload.framework || "ACTFL";
+  const framework = formData.get("framework") || "ACTFL";
 
   // compute scores for the shown block
   const scores = computeSkillScores(framework);
   ["Reading","Listening","Writing","Speaking"].forEach(skill => {
-    payload[`${framework} ${skill} Proficiency Can Do Statements`] = scores[skill];
+    formData.set(`${framework} ${skill} Proficiency Can Do Statements`, scores[skill]);
   });
 
   // set scores for second block as NA
   const other = framework === "CEFRL" ? "ACTFL" : "CEFRL";
   ["Reading","Listening","Writing","Speaking"].forEach(skill => {
-    payload[`${other} ${skill} Proficiency Can Do Statements`] = "NA";
+    formData.set(`${other} ${skill} Proficiency Can Do Statements`, "NA");
   });
 
   // add checkbox values individually by name
   document.querySelectorAll('input[type="checkbox"][name]').forEach(cb => {
-    payload[cb.name] = cb.checked ? 1 : 0;
+    formData.set(cb.name, cb.checked ? 1 : 0);
   });
 
   // include self-ratings
-  payload["Rate your reading proficiency"] = payload.self_reading || "";
-  payload["Rate your listening proficiency"] = payload.self_listening || "";
-  payload["Rate your writing proficiency"] = payload.self_writing || "";
-  payload["Rate your speaking proficiency"] = payload.self_speaking || "";
+  formData.set("Rate your reading proficiency", formData.get("self_reading"));
+  formData.set("Rate your listening proficiency", formData.get("self_listening"));
+  formData.set("Rate your writing proficiency", formData.get("self_writing"));
+  formData.set("Rate your speaking proficiency", formData.get("self_speaking"));
 
   // draw chart for chosen framework
   drawChart(scores, framework);
 
-  // send to Google App script
+  // send to Google App script; converted from json to text to bypass cors issues
   responseMsg.textContent = "Saving…";
   try {
     const res = await fetch(GOOGLE_SCRIPT_URL, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
+      body: formData
     });
 
-    const data = await res.json();
-    if (data.result === "success") {
-      responseMsg.textContent = "Thanks — your response was saved!";
-      form.reset();
-    } else {
-      responseMsg.textContent = "Error: " + data.message;
-    }
-  } catch (err) {
+    const text = await res.text();
+    responseMsg.textContent = "Thanks — your response was saved!";
+    form.reset();
+  }
+  catch (err) {
     responseMsg.textContent = "Network error: " + err.message;
   }
 });
