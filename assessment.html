@@ -6,13 +6,24 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="stylesheet" href="CSS/assessment.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
     <nav class="navbar">
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
+      <li><a href="assessment.html">Assessment</a></li>
       <li><a href="standards.htm">Standards</a></li>
-      <li><a href="resources.html">Resources</a></li>
+      <li class="dropdown">
+        <a href="resources.html">Resources</a>
+        <ul class="dropdown-menu">
+          <li><a href="reading.html">Reading</a></li>
+          <li><a href="listening.html">Listening</a></li>
+          <li><a href="writing.html">Writing</a></li>
+          <li><a href="speaking.html">Speaking</a></li>
+          <li><a href="learning.html">Learning</a></li>
+        </ul>
+      </li>
     </ul>
   </nav>
   <main class="container">
@@ -239,6 +250,9 @@
     <section id="chart-area" style="display:none;">
       <h2>Proficiency Levels Across Skills</h2>
       <canvas id="proficiencyChart"></canvas>
+      <div id="pdf-download-section" style="display:none; margin-top: 20px; text-align: center;">
+        <button type="button" id="downloadPdfBtn" style="background-color: #0074d9; color: white; padding: 10px 20px; border-radius: 8px; border: none; cursor: pointer; font-weight: 600; font-size: 16px;">Download Results as PDF</button>
+      </div>
     </section>
 
     <p id="responseMsg"></p>

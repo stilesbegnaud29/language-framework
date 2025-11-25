@@ -1,0 +1,337 @@
+:root {
+  --brown: #eeece4;
+  --light-gray: #eeece4;
+  --shadow: rgba(0, 0, 0, 0.1);
+}
+
+body {
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background-color: #eeece4;
+  margin: 0;
+  color: #222;
+}
+
+/* Navigation bar */
+.navbar {
+  width: 100%;
+  padding: 20px 0px;
+  display: flex;
+  justify-content: flex-end;
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  left: -10px;
+  z-index: 100;
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 5px;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #7c7c7c;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #000000;
+}
+
+/* Dropdown menu styling */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  list-style: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 8px 0;
+  margin: 0;
+  min-width: 150px;
+  display: none;
+  z-index: 101;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li {
+  padding: 0;
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #7c7c7c;
+  font-size: 16px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #f0f0f0;
+  color: #000000;
+}
+
+/* Page title */
+h1 {
+  text-align: center;
+  margin: 80px 20px 30px 20px;
+  font-size: 48px;
+  color: #111;
+}
+
+/* Controls section */
+.controls {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 1rem;
+  background: var(--light-gray);
+  border-bottom: 1px solid #dddddc;
+  margin-top: 20px;
+}
+
+.control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.control label {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.control input,
+.control select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.control input:focus,
+.control select:focus {
+  outline: none;
+  border-color: #0074d9;
+  box-shadow: 0 0 0 3px rgba(0, 116, 217, 0.1);
+}
+
+/* Grid layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  justify-items: center;
+}
+
+/* Card styling */
+.card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px var(--shadow);
+  text-align: center;
+  padding: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 300px;
+}
+
+.card img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  margin-bottom: 0.75rem;
+}
+
+.card h3 {
+  margin: 0.5rem 0;
+  color: black;
+  font-size: 18px;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: #555;
+  min-height: 48px;
+  margin: 0.5rem 0;
+}
+
+.card a {
+  display: inline-block;
+  margin-top: 0.75rem;
+  background: #0078d4;
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.card a:hover {
+  background-color: #005fa3;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px var(--shadow);
+}
+
+/* Skill and level labels */
+.skill-label {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 4px 2px;
+  color: white;
+}
+
+.skill-label.reading {
+  background-color: #4caf50;
+}
+
+.skill-label.listening {
+  background-color: #2196f3;
+}
+
+.skill-label.writing {
+  background-color: #ff9800;
+}
+
+.skill-label.speaking {
+  background-color: #f44336;
+}
+
+.skill-label.beginner {
+  background-color: #9ccc65;
+}
+
+.skill-label.intermediate {
+  background-color: #ffb74d;
+}
+
+.skill-label.advanced {
+  background-color: #ef5350;
+}
+
+.skill-label.superior {
+  background-color: #7e57c2;
+}
+
+/* Footer */
+footer {
+  background: var(--light-gray);
+  padding: 1rem;
+  text-align: center;
+  color: #777;
+  font-size: 0.85rem;
+  margin-top: 2rem;
+  border-top: 1px solid #ddd;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 36px;
+    margin: 70px 15px 25px 15px;
+  }
+
+  .controls {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .control {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .control input,
+  .control select {
+    width: 100%;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .nav-links {
+    gap: 15px;
+  }
+
+  .nav-links li a {
+    font-size: 16px;
+  }
+}
+
+/* Resource section styling */
+.resource-section {
+  padding: 2rem;
+  margin: 2rem 0;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.resource-section h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: #111;
+  font-size: 28px;
+  border-bottom: 2px solid #0074d9;
+  padding-bottom: 0.75rem;
+}
+
+.resource-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.resource-item {
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  background-color: #f9f9f9;
+  border-left: 4px solid #0074d9;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.resource-item:hover {
+  background-color: #f0f0f0;
+  transform: translateX(5px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.resource-item.hidden {
+  display: none;
+}

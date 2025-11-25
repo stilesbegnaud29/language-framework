@@ -122,3 +122,28 @@ html, body{
     font-size: 16px;
   }
 }
+
+/* Footer styling */
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  background-color: rgba(238, 236, 228, 0.95);
+  border-top: 1px solid #ddd;
+  z-index: 99;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: #0074d9;
+  font-weight: 600;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.footer-link:hover {
+  color: #005fa3;
+  text-decoration: underline;
+}

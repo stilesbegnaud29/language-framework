@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>French Learning Resources</title>
+  <link rel="stylesheet" href="CSS/feedback.css">
+</head>
+<body>
+
+  <h1>Feedback</h1>
+
+  <!-- Navigation bar -->
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="assessment.html">Assessment</a></li>
+      <li><a href="standards.htm">Standards</a></li>
+      <li class="dropdown">
+        <a href="resources.html">Resources</a>
+        <ul class="dropdown-menu">
+          <li><a href="reading.html">Reading</a></li>
+          <li><a href="listening.html">Listening</a></li>
+          <li><a href="writing.html">Writing</a></li>
+          <li><a href="speaking.html">Speaking</a></li>
+          <li><a href="learning.html">Learning</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <main class="feedback-container">
+    <div class="feedback-box">
+      <h2>Share Your Feedback</h2>
+      
+      <form id="feedbackForm" class="feedback-form">
+        <textarea 
+          id="feedback-text" 
+          name="feedback" 
+          placeholder="Type here..." 
+          rows="8" 
+          required
+        ></textarea>
+        
+        <button type="submit" class="submit-btn">Submit</button>
+      </form>
+      
+      <p id="feedbackMessage" class="feedback-message" style="display:none;"></p>
+    </div>
+  </main>
+
+  <script>
+    // Google Apps Script URL - replace with your actual endpoint
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzqzf7Y3H4B7e9gIKfE5mHk4GXtErDS6boFE1hVM6-yGK6vtFI7_rpch1kmNhSaxcJB/exec";
+    
+    document.getElementById('feedbackForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const feedbackText = document.getElementById('feedback-text').value;
+      const feedbackMessage = document.getElementById('feedbackMessage');
+      
+      if (feedbackText.trim() === '') {
+        feedbackMessage.textContent = 'Please enter your feedback.';
+        feedbackMessage.style.color = '#d32f2f';
+        feedbackMessage.style.display = 'block';
+        return;
+      }
+      
+      try {
+        // Prepare form data
+        const formData = new FormData();
+        formData.append('feedback', feedbackText);
+        formData.append('timestamp', new Date().toISOString());
+        formData.append('sheet', 'Feedback');
+        
+        // Submit to Google Apps Script
+        feedbackMessage.textContent = 'Submitting...';
+        feedbackMessage.style.color = '#0074d9';
+        feedbackMessage.style.display = 'block';
+        
+        const response = await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          body: formData
+        });
+        
+        // Show success message
+        feedbackMessage.textContent = 'Thank you for your feedback! It has been submitted successfully.';
+        feedbackMessage.style.color = '#388e3c';
+        feedbackMessage.style.display = 'block';
+        
+        // Reset the form
+        this.reset();
+        
+        // Hide the message after 5 seconds
+        setTimeout(() => {
+          feedbackMessage.style.display = 'none';
+        }, 5000);
+      } catch (error) {
+        feedbackMessage.textContent = 'Error submitting feedback. Please try again.';
+        feedbackMessage.style.color = '#d32f2f';
+        feedbackMessage.style.display = 'block';
+        console.error('Error:', error);
+      }
+    });
+  </script>
+</body>
+</html>

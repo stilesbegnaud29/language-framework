@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listening Resources</title>
+  <link rel="stylesheet" href="CSS/categories.css">
+</head>
+<body>
+
+  <h1>Listening Resources</h1>
+
+  <!-- Navigation bar -->
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="assessment.html">Assessment</a></li>
+      <li><a href="standards.htm">Standards</a></li>
+      <li class="dropdown">
+        <a href="resources.html">Resources</a>
+        <ul class="dropdown-menu">
+          <li><a href="reading.html">Reading</a></li>
+          <li><a href="listening.html">Listening</a></li>
+          <li><a href="writing.html">Writing</a></li>
+          <li><a href="speaking.html">Speaking</a></li>
+          <li><a href="learning.html">Learning</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Controls section -->
+  <div class="controls">
+    <div class="control-group">
+      <label for="searchInput">Search:</label>
+      <input type="text" id="searchInput" placeholder="Search resources...">
+    </div>
+    <div class="control-group">
+      <label for="filterLevel">Filter by Proficiency:</label>
+      <select id="filterLevel">
+        <option value="">All Levels</option>
+        <option value="beginner">Beginner</option>
+        <option value="intermediate">Intermediate</option>
+        <option value="advanced">Advanced</option>
+        <option value="superior">Superior</option>
+      </select>
+    </div>
+    <div class="control-group">
+      <label for="filterType">Filter by Type:</label>
+      <select id="filterType">
+        <option value="">All Types</option>
+        <option value="reading">Reading</option>
+        <option value="listening">Listening</option>
+        <option value="writing">Writing</option>
+        <option value="speaking">Speaking</option>
+      </select>
+    </div>
+    <div class="control-group">
+      <label for="sortBy">Sort by:</label>
+      <select id="sortBy">
+        <option value="name">Name (A-Z)</option>
+        <option value="level">Proficiency Level</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Grid container for resource cards -->
+  <main id="categoryGrid" class="grid">
+    <!-- Resource categories section -->
+    <section class="resource-section">
+      <h2>Podcasts</h2>
+      <ul class="resource-list">
+        <li class="resource-item" data-level="beginner" data-type="listening">Podcast 1 - Beginner Level</li>
+        <li class="resource-item" data-level="beginner" data-type="listening">Podcast 2 - Beginner Level</li>
+        <li class="resource-item" data-level="intermediate" data-type="listening">Podcast 3 - Intermediate Level</li>
+        <li class="resource-item" data-level="intermediate" data-type="listening">Podcast 4 - Intermediate Level</li>
+        <li class="resource-item" data-level="advanced" data-type="listening">Podcast 5 - Advanced Level</li>
+      </ul>
+    </section>
+
+    <section class="resource-section">
+      <h2>Songs</h2>
+      <ul class="resource-list">
+        <li class="resource-item" data-level="beginner" data-type="listening">Song 1 - Beginner Level</li>
+        <li class="resource-item" data-level="beginner" data-type="listening">Song 2 - Beginner Level</li>
+        <li class="resource-item" data-level="intermediate" data-type="listening">Song 3 - Intermediate Level</li>
+        <li class="resource-item" data-level="intermediate" data-type="listening">Song 4 - Intermediate Level</li>
+        <li class="resource-item" data-level="advanced" data-type="listening">Song 5 - Advanced Level</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 French Language Learning. All rights reserved.</p>
+  </footer>
+
+  <script src="JS/categories.js"></script>
+</body>
+</html>

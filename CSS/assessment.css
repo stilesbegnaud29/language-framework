@@ -111,6 +111,49 @@ input[type="range"] {
   color: #000000;
 }
 
+/* Dropdown menu styling */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  list-style: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 8px 0;
+  margin: 0;
+  min-width: 150px;
+  display: none;
+  z-index: 101;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li {
+  padding: 0;
+}
+
+.dropdown-menu li a {
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #7c7c7c;
+  font-size: 16px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.dropdown-menu li a:hover {
+  background-color: #f0f0f0;
+  color: #000000;
+}
+
 label small {
   color: black;
   font-style: italic;
